@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# Tortellini alla dybala
 
 ```
 npm create astro@latest -- --template basics
