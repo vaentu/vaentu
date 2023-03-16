@@ -11,7 +11,12 @@ console.log(players)
 	<h1>TORNEO DELLA SCUOLA!</h1>
 	<p>sezione 3e!</p>
 	{
-		players.map(i => <img src={i.default} alt=""/> )
+		players.map(i => (
+		<div class="player"> <button class="pass" type="button">Pass!</button>
+			<img src={i.default} alt=""/>
+			<button class="smash" type="button">Smash!</button>
+		</div>
+		) )
 	}
 	</main>
 
@@ -29,7 +34,7 @@ console.log(players)
 		align-items: center;
 	}
 	img {
-		width: 50%;
+		width: 35%;
 		padding: 2rem;
 		transition: 1s;
 	
@@ -43,5 +48,29 @@ console.log(players)
 	}
 	p {
 		font-size: 6vw;
+	}
+	.player {
+		width: 100%;
+		display:flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	button {
+		background: none;
+		border: none;
+		color: rgb(224, 17, 17);
+		font-size: 3rem;
+		text-transform: uppercase;
+		transition: 1s;
+	
+		
+
+	}
+	button.smash {
+		color: green; 
+	}
+	button:hover {
+		scale: 1.5;
+	
 	}
 </style>
