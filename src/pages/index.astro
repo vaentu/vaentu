@@ -23,8 +23,8 @@ console.log(players)
 	<h1>TORNEO DELLA SCUOLA!</h1>
 	<p>sezione 3e!</p>
 	{
-		players.sort(() => (Math.random() > .5) ? 1 : -1).map(i => (
-		<div class="player"> <button class="pass" data-voto="pass" type="button">Pass!</button>
+		players.map(i => (
+		<div class="player" style={'--order: ' + Math.floor(Math.random() *10+2) }> <button class="pass" data-voto="pass" type="button">Pass!</button>
 			<img src={i.default} alt=""/>
 			<button class="smash" data-voto="smash" type="button">Smash!</button>
 		</div>
@@ -64,6 +64,7 @@ console.log(players)
 		display:flex;
 		justify-content: space-around;
 		align-items: center;
+		order:var(--order);
 	}
 	button {
 		background: none;
