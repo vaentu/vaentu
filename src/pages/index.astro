@@ -5,16 +5,28 @@ import Layout from '../layouts/Layout.astro';
 const players=await Astro.glob('../../public/images/players/*')
 console.log(players)
 ---
+<script>
+	console.log('scrivi ciao, sscrivi la frase che vuoi')
+	document.querySelectorAll('button').forEach(el=>{
+		el.onclick= () => {
+			console.log(el.parentNode)
+			const voto=el.getAttribute('data-voto')
+			el.parentNode!.querySelector('img')!.classList.remove('smash')
+			el.parentNode!.querySelector('img')!.classList.remove('pass')
+			el.parentNode!.querySelector('img')!.classList.add(voto!)
 
+		}
+	})
+</script>
 <Layout title="Vaentu">
 	<main>
 	<h1>TORNEO DELLA SCUOLA!</h1>
 	<p>sezione 3e!</p>
 	{
 		players.map(i => (
-		<div class="player"> <button class="pass" type="button">Pass!</button>
+		<div class="player"> <button class="pass" data-voto="pass" type="button">Pass!</button>
 			<img src={i.default} alt=""/>
-			<button class="smash" type="button">Smash!</button>
+			<button class="smash" data-voto="smash" type="button">Smash!</button>
 		</div>
 		) )
 	}
@@ -39,9 +51,6 @@ console.log(players)
 		transition: 1s;
 	
 	
-	}
-	img:hover{
-		scale: 1.5;
 	}
 	h1 {
 		font-size: 6vw;
@@ -72,5 +81,13 @@ console.log(players)
 	button:hover {
 		scale: 1.5;
 	
+	}
+	img.smash {
+		filter:saturate(2);
+		scale: 1.2;
+	}
+	img.pass {
+		filter:grayscale(1);
+		scale: 0.8;
 	}
 </style>
