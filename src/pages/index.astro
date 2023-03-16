@@ -1,19 +1,34 @@
 ---
+import { AstroComponentInstance } from 'astro/dist/runtime/server';
 import Layout from '../layouts/Layout.astro';
+
+const players=await Astro.glob('../../public/images/players/*')
+console.log(players)
 ---
 
 <Layout title="Vaentu">
 	<main>
 	<h1>CIAO SONO SAMU!</h1>
 	<p>E sono proprio un bravo developer!</p>
+	{
+		players.map(i => <img src={i.default} alt=""/> )
+	}
 	</main>
+
 </Layout>
 <style>
 	main {
 		text-align: center;
-		mix-blend-mode: difference;
+		/* mix-blend-mode: difference; */
 		color: white;
 		font-size: 3rem;
 		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	img {
+		width: 50%;
 	}
 </style>
